@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+    相册 | Tinydz博客
+{% endblock title %}
+{% block content %}
+<article id="post-guide-for-zb" class="article article-type-post" itemscope itemprop="blogPost">
+   <h1 class="article-title" itemprop="name">
+       哎呀！这里什么都没有诶...ToT....
+    </h1>
+     
+</article>
+<div >
+  <div class="share">
+  <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style">
+      <span class="jiathis_txt">分享到：</span>
+      <a class="jiathis_button_tsina"></a>
+      <a class="jiathis_button_cqq"></a>
+      <a class="jiathis_button_douban"></a>
+      <a class="jiathis_button_weixin"></a>
+      <a class="jiathis_button_tumblr"></a>
+      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+  </div>
+</div>
+
+{% include "duoshuo.html" %}
+
+{% endblock content %}

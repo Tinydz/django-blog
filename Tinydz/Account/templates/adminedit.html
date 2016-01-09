@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header %}
+	{% include "adminheader.html" %}
+{% endblock header %}
+
+{% block content %}
+<section>
+<form action="/Account/AdminDeploy/" method="post">
+{% csrf_token %}
+<article class="article" style="padding-top: 20px; padding-bottom: 30px; padding-left: 30px; padding-right: 10px;">
+	<div class="article-edit-head">
+		<div class="panel panel-default" style="text-align: left;padding-left: 20px;padding-right: 20px;">
+		<div class="panel-body" style="padding-left: 40px;">
+			<div class="row"><h4>文章标题</h4>
+				<input type="hidden" name="article_id" value="{{article.id}}" />
+			    <input type="text" name="title" class="form-control" placeholder="请输入标题" value="{{article.title}}">
+			</div>
+			<div class="row"><h4>文章分类</h4>
+				 <select name="category"  class="form-control" >
+				 	<option value="{{article.category.name}}">{{article.category.name}}</option>
+				 	{% for category in categories %}
+				 	   <option value="{{category.name}}">{{category.name}}</option>
+				 	{% endfor %}
+				 </select>
+			</div>
+            <div class="row"><h4>文章标签</h4>
+            	 <input type="text" name="tags" class="form-control" placeholder="使用标签是一种美德哟^_^!哟，分割(如java,python,注意,逗号用英文格式)" value="{{ article_tags }}">
+            </div>
+            <div class="row"><h4>发布时间</h4>
+            	<div class='col-sm-6' style="padding-left: 0px;">
+            	<input id="d11" type="text" class="form-control" name="publish_time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{{publish_time}}"/>
+            	<script language="javascript" type="text/javascript" src="{% static 'My97DatePicker/WdatePicker.js' %}"></script>
+                </div>
+            </div>
+		</div>
+		<div class="panel panel-default" style="margin-left: 25px;">
+			<h4 style="text-align: left; padding-left: 25px; padding-top: 5px; padding-bottom: 5px;">写博文</h4>
+			<div class="panel-body">
+				<div id="layout" style="height: 450px;">
+	                <div id="test-editormd">
+	                	 <textarea  name="content" id="markdown-text" style="display:none;">{{ article.content }}</textarea>
+	                </div>
+	             </div>
+			</div>
+		</div>
+	</div>
+   </div>
+</article>
+</form>
+</section>
+ 		<script src="{% static "jquery.min.js" %}"></script>
+        <script src="{% static "editormd.min.js" %}"></script>
+
+		<script type="text/javascript">
+            $(function(){
+            	testEditor = editormd("test-editormd", {
+                        width: "100%",
+                        height: "100%",
+                        path : "{% static "lib/" %}",
+                        toolbarIcons : function() {
+			            return ["undo","redo","|","bold","del","italic","quote","uppercase","lowercase","h1","h2","h3","h4","h5","h6","|","list-ul","list-ol","hr","|","link","reference-link","image","code-block","datetime","html-entities","|","watch","preview","clear","search","||","close","save","pub","fullscreen"]
+			            },
+			            toolbarCustomIcons :{
+			            close   : "<input onclick='gohome();' type='button' style='width:75px; background:#cc6666; height:50px; font-size:15px; color:#FFF; border:none; border-radius: 0.3em; cursor:pointer;' value='放弃'></button>",
+			            pub : "<input type='submit' style='width:75px; background:#0066CC; height:50px; font-size:15px; color:#FFF; border:none; border-radius: 0.3em; cursor:pointer;' value='发布'></button>"
+			            },
+			            theme : "dark",
+                        previewTheme : "dark",
+                        editorTheme : "pastel-on-dark",
+                        emoji : true,
+                        taskList : true,
+                        tocm            : true,         // Using [TOCM]
+                        tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+                        flowChart : true,             // 开启流程图支持，默认关闭
+                        sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+                        imageUpload : true,
+                        imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                });
+            });
+</script>
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}">
+	</script>
+{% endblock %}

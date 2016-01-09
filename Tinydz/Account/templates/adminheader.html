@@ -1,0 +1,81 @@
+{% load staticfiles %}
+{% block admincss %}
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'bootstrap/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/editormd.css' %}" />
+{% endblock admincss %}
+<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">	
+	<a href="{% url 'index' %}">		
+			<img src="{% static 'images/Tinydz.jpg' %}" class="profilepic">	
+	</a>
+		<hgroup>
+		  <h1 class="header-author">
+		  <a href="{% url 'index' %}" style="text-decoration: none;">{{ request.user.username }}</a></h1>
+		</hgroup>
+		<p class="header-subtitle">面朝大海，春暖花开</p>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+				<nav class="header-menu">
+						<ul>
+							<li><a href="#" style="text-decoration: none;">我的资料</a></li>     
+							<li><a href="/Account/AdminIndex/{{user_id}}" style="text-decoration: none;">文章管理</a></li>      
+							<li><a href="{% url 'CategoryAchieve'%}" style="text-decoration: none;">文章分类</a></li>
+							<li><a href="{% url 'logout' %}" style="text-decoration: none;">注销</a></li>
+						</ul>
+					</nav>
+					<br>
+				<nav class="header-nav">
+					<div class="social">
+							<a class="github" target="_blank" href="https://github.com/Tinydz">github</a>
+							<a class="weibo" target="_blank" href="#">weibo</a>
+							<a class="rss" target="_blank" href="{% url 'RSS'%}">rss</a> 
+					</div>
+				</nav>
+
+			</section>
+			</div>
+		</div>
+
+	</header>				
+</div>
+</div>
+    <div class="mid-col">
+    <nav id="mobile-nav">
+  	<div class="overlay">
+  		<h1 class="header-author js-mobile-header hide">Tinydz</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+		<a href="{% url 'index' %}">
+			<img src="{% static 'images/Tinydz.jpg' %}" class="profilepic">
+		</a>		
+			<hgroup>
+			  <h1 class="header-author">
+			  	{{ request.user.username }}
+			  </h1>
+			</hgroup>
+			<p class="header-subtitle">面朝大海，春暖花开</p>			
+			<nav class="header-menu">
+						<ul>
+							<li><a href="#" style="text-decoration: none;">我的资料</a></li>          
+							<li><a href="/Account/AdminIndex/{{user_id}}" style="text-decoration: none;">文章管理</a></li> 
+							<li><a href="{% url 'CategoryAchieve'%}" style="text-decoration: none;">文章分类/a></li>
+							<li><a href="{% url 'logout' %}" style="text-decoration: none;">注销</a></li>
+						</ul>
+					</nav>
+					<br>
+			<nav class="header-nav">
+				<div class="social">	
+					<a class="github" target="_blank" href="https://github.com/Tinydz" title="github">github</a>
+					<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					<a class="rss" target="_blank" href="{% url 'RSS'%}" title="rss">rss</a>
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+<div class="body-wrap">
+

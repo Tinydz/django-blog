@@ -1,0 +1,30 @@
+
+  {% if articles|length < 1%}
+    <h3>主人，您暂时还没有写文章呢，赶快去写吧 ^_^ </h3>
+  {% else %}
+  <nav>
+    <ul class="pagination">
+      {% if articles.has_previous %}
+          <li><a href="?page={{ articles.previous_page_num }}" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
+      {% else %}
+        <li class="disabled"><a href="?page={{ articles.previous_page_num }}" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
+      {% endif %}
+      
+      {% for page in articles.paginator.page_range %}
+        {% if page = articles.number %}
+              <li class="active"><a href="?page={{page}}">{{page}}<span class="sr-only"></span></a></li>
+      {% else %}
+        <li><a href="?page={{page}}">{{page}}<span class="sr-only"></span></a></li>
+      {% endif %}
+    {% endfor %}
+    {% if articles.has_next %}
+          <li>
+          <a href="?page={{ articles.next_page_num }}" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+        {% else %}
+         <li class="disabled">
+         <a href="?page={{ articles.next_page_num }}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+         </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

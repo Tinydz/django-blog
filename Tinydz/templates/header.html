@@ -1,0 +1,115 @@
+{% load staticfiles %}
+<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+	<a href="{% url 'index' %}">
+		<img src="{% static 'images/Tinydz.jpg' %}" class="profilepic">
+	</a>
+		<hgroup>
+		  <h1 class="header-author">
+		  <a href="{% url 'index' %}">Tinydz</a></h1>
+		</hgroup>
+		<p class="header-subtitle">面朝大海，春暖花开</p>
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>		
+						<div class="icon-wrap icon-me hide" data-idx="2">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+					</div>	
+				</div>
+				<div class="tips-box hide">
+				<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						<li>Aboutme</li>
+					</ul>
+				</div>
+			</div>
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+							<li><a href="{% url 'index'%}">主页</a></li>      
+							<li><a href="{% url 'Achieve'%}">所有文章</a></li>      
+							<li><a href="{% url 'CategoryAchieve'%}">归档</a></li>
+							<li><a href="{% url 'picture'%}">相册</a></li>
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+								<a class="github" target="_blank" href="https://github.com/Tinydz">github</a>
+								<a class="weibo" target="_blank" href="http://weibo.com/tinydz15">weibo</a>
+								<a class="rss" target="_blank" href="{% url 'RSS'%}">rss</a> 
+						</div>
+					</nav>
+				</section>
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud" style="margin-left: 25px;">
+						{% if tagCloud %}
+					    {% for tag in tagCloud%}
+					        <a href="/tagachieves/{{ tag.name }}">{{ tag }}</a>
+					    {% endfor %}
+					    {% else %}
+					       尚未设置标签
+					    {% endif %}
+					</div>
+				</section>
+				<section class="switch-part switch-part3">	
+					<div id="js-aboutme">Jxust大学12级<br>旅游,冒险,IT技术<br>开源fans</div>
+				</section>
+
+			</div>
+		</div>
+	</header>				
+</div>
+</div>
+    <div class="mid-col">
+    <nav id="mobile-nav">
+  	<div class="overlay">
+  		<h1 class="header-author js-mobile-header hide">Tinydz</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="{% url 'index' %}">
+				<img src="{% static 'images/Tinydz.jpg' %}" class="profilepic">
+			</a>	
+			<hgroup>
+			  <h1 class="header-author">Tinydz</h1>
+			</hgroup>
+			<p class="header-subtitle">面朝大海，春暖花开</p>			
+			<nav class="header-menu">
+				<ul>				
+					<li><a href="{% url 'index' %}">主页</a></li>		        
+					<li><a href="{% url 'Achieve' %}">所有文章</a></li>		        
+					<li><a href="{% url 'CategoryAchieve' %}">归档</a></li>
+					<li><a href="{% url 'picture'%}">相册</a></li>
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">	
+				<a class="github" target="_blank" href="https://github.com/Tinydz" title="github">github</a>
+				<a class="weibo" target="_blank" href="http://weibo.com/tinydz15" title="weibo">weibo</a>	 
+				<a class="rss" target="_blank" href="{% url 'RSS'%}" title="rss">rss</a>
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+<div class="body-wrap">

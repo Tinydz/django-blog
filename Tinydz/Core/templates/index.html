@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% load staticfiles %}
+{% load custom_markdown %}
+{% block content %}
+{% if articles  %}
+{% for article in articles %}
+ <article id="post-hack-in-localstorage" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-meta">
+      <span class="article-date">
+      <time itemprop="datePublished">
+      {{ article.publish_time.month}}月{{ article.publish_time.day}} / {{ article.publish_time.year }}
+      </time>
+    </span>
+    </div>
+  <div class="article-inner">  
+      <input type="hidden" class="isFancy" />
+      <header class="article-header">
+	    <h1 itemprop="name">
+	      <a class="article-title" href="{{ article.get_absolute_url }}">{{article.title}}</a>
+	    </h1>
+      </header>
+    <div class="article-entry" itemprop="articleBody">
+          {{article.content|custom_markdown|truncatewords_html:60|safe }}  
+    </div> 
+    <div class="article-info article-info-index">
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list">
+		{% for tagname in article.get_tags %}
+		<li class="article-tag-list-item">
+		<a class="article-tag-list-link" href="/tagachieves/{{ tagname}}">{{ tagname }}</a></li>
+		<li class="article-tag-list-item">
+	    {% endfor %}
+		</li>
+		</ul>
+	</div>
+        <p class="article-more-link">
+          <a  href="{{ article.get_absolute_url }}">Read More</a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+</div>
+</article>
+{% endfor %}
+
+{% include "paginator.html" %}
+{% else %}
+  <h2>主人，您还没有写文章呢，赶快去写吧^_^!</h2>
+{% endif %}
+
+{% endblock %}
